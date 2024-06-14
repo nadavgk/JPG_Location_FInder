@@ -1,5 +1,14 @@
 from exif import Image
 
+
+
+def dms_to_decimal_degrees(latitude_d, latitude_m, latitude_s, longitude_d, longitude_m, longitude_s, lat_ref, long_ref):
+
+    latitude_dd = (latitude_d + latitude_m/60 + latitude_s/3600) * (-1 if lat_ref == 'S' else 1)
+    longitude_dd = (longitude_d + longitude_m/60 + longitude_s/3600) * (-1 if long_ref == 'W' else 1)
+    return latitude_dd, longitude_dd
+
+
 def process_image(file_path):
 
     try:
@@ -16,8 +25,4 @@ def process_image(file_path):
     except Exception as e:
         raise Exception(f"Error extracting coordinates: {e}")
 
-def dms_to_decimal_degrees(latitude_d, latitude_m, latitude_s, longitude_d, longitude_m, longitude_s, lat_ref, long_ref):
 
-    latitude_dd = (latitude_d + latitude_m/60 + latitude_s/3600) * (-1 if lat_ref == 'S' else 1)
-    longitude_dd = (longitude_d + longitude_m/60 + longitude_s/3600) * (-1 if long_ref == 'W' else 1)
-    return latitude_dd, longitude_dd

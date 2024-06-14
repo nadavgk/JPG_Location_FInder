@@ -7,7 +7,7 @@ import tempfile
 st.title("JPG to Google maps")
 st.markdown("Pinpoint the location of your JPG on google maps and find nearby establishments of your choice")
 
-# Step 1: Upload JSON Configuration File (optional)
+# Step 1
 st.header("Step 1: API Configuration")
 uploaded_file = st.file_uploader("Upload JSON File containing your Google **API-KEY** (optional)", type=["json"])
 google_api_key = None
@@ -20,7 +20,7 @@ if uploaded_file:
 st.markdown("#without an api-key the web browser will still open Google maps on the specified location but without street-view or nearby establishments")
 
 
-# Step 2: Ask if the user wants to use a JPG image for coordinates
+# Step 2
 st.header("Step 2: Coordinates Source")
 
 use_jpg_coords = st.checkbox("**Use coordinates from JPG file**")
@@ -51,7 +51,7 @@ else:
     latitude = st.number_input("**Enter Latitude**", value=40.748817, format="%.6f")
     longitude = st.number_input("**Enter Longitude**", value=-73.985428, format="%.6f")
 
-# Step 3: Select place type and radius
+# Step 3
 st.header("Step 3: choose a Type of Establishment you would like to find around your specified location")
 place_type = st.selectbox(
     "**Select Establishment Type**",
@@ -60,7 +60,7 @@ place_type = st.selectbox(
 
 radius = st.number_input("**Enter distance radius from location** (in meters)", value=1500, min_value=100, max_value=50000, step=100)
 
-# Step 4: Find Nearby Places
+# Step 4
 st.header("Step 4: Open Location on Google maps")
 st.markdown("Google maps will open in browser and a list of nearby establishments will appear here")
 if st.button("**Open the map**"):
